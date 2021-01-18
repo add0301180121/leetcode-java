@@ -51,7 +51,7 @@ public class TwoNumbersSum {
                 }
             }
         }
-        throw new NoSuchElementException("no such two numbers");
+        throw new IllegalArgumentException("no such two numbers");
     }
 
     public static void main(String[] args) {
