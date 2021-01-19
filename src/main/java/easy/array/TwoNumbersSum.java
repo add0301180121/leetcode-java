@@ -35,7 +35,6 @@ package easy.array;
  */
 
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 
 /**
  * @author hu
