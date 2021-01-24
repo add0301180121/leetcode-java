@@ -27,6 +27,8 @@ package easy.array;
  */
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author hu
@@ -155,9 +157,33 @@ public class MajorElements {
         return -1;
     }
 
+    /**
+     * 利用Map 遍历数组得到一个key为元素 value为出现个数的map 再遍历map
+     * 时间复杂度O(N)
+     * 空间复杂度不为O(1)
+     *
+     * @param nums
+     * @return
+     */
+    public static int majorityElementFour(int[] nums) {
+        int length = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            int count = map.getOrDefault(num, 0) + 1;
+            map.put(num, count);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > length / 2) {
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         int[] n = new int[]{12, 52, 12, 70, 12, 61, 12, 12, 50, 72, 82, 12, 11, 25, 28, 43, 40, 12, 12, 53, 12, 12, 98, 12, 12, 92, 81, 2, 12, 15, 40, 12, 12, 9, 12, 31, 12, 12, 12, 12, 77, 12, 12, 50, 12, 12, 12, 93, 41, 92, 12, 12, 12, 12, 12, 12, 12, 12, 12, 37, 48, 14, 12, 70, 82, 12, 80, 12, 12, 12, 12, 56, 30, 12, 8, 12, 50, 12, 20, 12, 21, 97, 12, 42, 12, 10, 12, 38, 73, 15, 9, 11, 79, 12, 12, 28, 51, 12, 15, 12};
-        int i = majorityElementTwo(n);
+        int i = majorityElementFour(n);
         System.out.println(i);
     }
 }
