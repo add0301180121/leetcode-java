@@ -36,6 +36,7 @@ public class MajorElements {
 
     /**
      * 方法一 先排序 遍历数组 求相同元素的个数 个数大于长度一半就输出 数组前后元素不一样则重置
+     * 因为用到了Arrays的sort()方法 时间复杂度将不到O(N)
      *
      * @param nums
      * @return
@@ -65,6 +66,7 @@ public class MajorElements {
 
     /**
      * 方法二 排序+双指针
+     * 因为用到了Arrays的sort()方法 时间复杂度将不到O(N)
      *
      * @param nums
      * @return
@@ -104,6 +106,11 @@ public class MajorElements {
 
     /**
      * 方法三 投票法 这个方法一听就很牛逼
+     * 时间复杂度：O(N)
+     * 空间复杂度：O(1)
+     * 维护一个众数major和一个频数count，如果出现不同的数count减1，如果出现相同的数，count+1
+     * 如果存在主要元素，那么最终count一定大于0，否则一定不存在主要元素。但仅大于0也不一定能判断确实存在主要元素
+     * 如果数组为[4,3,3,2,2,2]，会发现count为2。但是，2并不是主要元素，所以还要添加验证环节
      *
      * @param nums
      * @return
@@ -116,6 +123,36 @@ public class MajorElements {
             return -1;
         }
 
+        // 投票环节
+        int major = 0;
+        int vote = 0;
+        for (int num : nums) {
+            if (vote == 0) {
+                major = num;
+                vote++;
+            } else {
+                if (major == num) {
+                    vote++;
+                } else {
+                    vote--;
+                }
+            }
+        }
+
+        // 验证环节
+        if (vote == 0) {
+            return -1;
+        }
+        int identify = 0;
+        for (int num : nums) {
+            if (major == num) {
+                identify++;
+                if (identify > length / 2) {
+                    return major;
+                }
+            }
+        }
+        return -1;
     }
 
     public static void main(String[] args) {
