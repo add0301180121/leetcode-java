@@ -39,6 +39,8 @@ public class MinimalNumber {
      * 思路和算法
      * <p>
      * 对原数组从小到大排序后取出前 k个数即可
+     * 时间复杂度O(N logN),其中 N 为数组长度,排序需要O(NlogN)的时间
+     * 空间复杂度O(logN),主要为排序的空间开销
      *
      * @param arr
      * @param k
@@ -53,4 +55,9 @@ public class MinimalNumber {
         }
         return answer;
     }
+
+    /**
+     * 方法2 堆
+     */
+    // TODO
 }

@@ -38,7 +38,7 @@ public class DuplicatedNumbers {
      */
     public static int findRepeatNumber(int[] nums) {
         int answer = -1;
-        Set set = new HashSet<Integer>();
+        Set<Integer> set = new HashSet<Integer>();
         for (int i = 0, length = nums.length; i < length; i++) {
             boolean flag = false;
             // Set的add()方法的返回值为布尔值 true为值加入set容器中 false则相反

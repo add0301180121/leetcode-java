@@ -54,8 +54,9 @@ public class OrderedArraySquare {
 
     /**
      * 方法二 双指针
+     * 头尾指针相加比较 小于0 说明 头指针指向的为负数且绝对值大于尾指针指向的数(数组元素全为负数时也成立)
      * 时间复杂度O(n)
-     * 空间复杂度O(1)
+     * 空间复杂度O(n)
      *
      * @param nums
      * @return
